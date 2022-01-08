@@ -1,10 +1,34 @@
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
-from conf import bot_token
 import os
 import logging
 import value_evaluating
+import sqlite3
+
+conn = sqlite3.connect('venv/values_db.db')
+cur = conn.cursor()
+
+cur.execute("""CREATE TABLE IF NOT EXISTS user_gay_rate(
+   user_id INT,
+   value INT,
+   date DATE);
+""")
+conn.commit()
+
+cur.execute("""CREATE TABLE IF NOT EXISTS user_cock(
+   user_id INT,
+   value INT,
+   date DATE);
+""")
+conn.commit()
+
+cur.execute("""CREATE TABLE IF NOT EXISTS user_depression(
+   user_id INT,
+   value INT,
+   date DATE);
+""")
+conn.commit()
 
 API_TOKEN = os.getenv("TELEGRAM_API_TOKEN")
 bot = Bot(token = API_TOKEN)
