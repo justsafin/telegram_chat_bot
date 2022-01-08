@@ -1,0 +1,6 @@
+Dockerfile
+__pycache__/
+conf.py
+depr_functions.py
+requirements.txt
+.idea/
